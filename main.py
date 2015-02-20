@@ -10,7 +10,7 @@ from Classes.WebDriverWrapper import WebDriverWrapper as WebDriver
 from Classes import DisplayWrapper as Display
 from Classes.DataExtractor import DataExtractor
 from Classes.FBPoster import FBPoster
-
+import traceback
 
 
 
@@ -62,6 +62,8 @@ try:
 except:
 
     logMessage = 'ERROR: '+ str(sys.exc_info()[0]) + ' (' + str(sys.exc_info()[1]) + ')'
+    traceback.print_exc()
+
 
 finally:
 
