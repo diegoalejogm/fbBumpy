@@ -6,7 +6,7 @@ import socket
 import sys
 import datetime
 
-from Classes.WebDriverWrapper import WebDriverWrapper as WebDriver
+from Classes.webDriverWrapper import WebDriverWrapper as WebDriver
 from Classes import DisplayWrapper as Display
 from Classes.DataExtractor import DataExtractor
 from Classes.FBPoster import FBPoster
