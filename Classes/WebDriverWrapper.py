@@ -1,7 +1,7 @@
 __author__ = 'Diego'
 from selenium.webdriver.common.keys import Keys
 from selenium import webdriver
-class WebDriverWrapper:
+class WebDriverWrapper(webdriver.Firefox):
 
 
     def __init__(self):
@@ -10,8 +10,8 @@ class WebDriverWrapper:
     def start(self, url):
         self.webDriver = webdriver.Firefox()
         self.webDriver.implicitly_wait(10)
+#       self.webDriver.set_page_load_timeout(5)
         self.webDriver.get(url)
-
 
     def setCookies(self, cookies):
         self.webDriver.delete_all_cookies()
