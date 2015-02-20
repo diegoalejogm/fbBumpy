@@ -6,7 +6,7 @@ import socket
 import sys
 import datetime
 
-from Classes.webDriverWrapper import WebDriverWrapper as WebDriver
+from Classes.WebDriverWrapper import WebDriverWrapper as WebDriver
 from Classes import DisplayWrapper as Display
 from Classes.DataExtractor import DataExtractor
 from Classes.FBPoster import FBPoster
@@ -17,6 +17,8 @@ from Classes.FBPoster import FBPoster
 # Variables
 
 logMessage = ''
+displayStarts = False
+webDriverStarts = False
 
 try:
 
@@ -39,11 +41,13 @@ try:
     if(DEPLOYMENT):
         display = Display()
         display.start()
+        displayStarts = True
+
 
     # WEBDRIVER INITIALIZATION
     webDriver = WebDriver()
     webDriver.start(FACEBOOK_URL)
-
+    webDriverStarts = True
     webDriver.setCookies(cookies)
 
 
@@ -60,12 +64,6 @@ except:
     logMessage = 'ERROR: '+ str(sys.exc_info()[0]) + ' (' + str(sys.exc_info()[1]) + ')'
 
 finally:
-    # STOP DRIVER AND DISPLAY
-    print(logMessage)
-    webDriver.stop()
-
-    if(DEPLOYMENT):
-        display.stop()
 
     # SAVE LOG
     time = str(datetime.datetime.now())
@@ -73,3 +71,13 @@ finally:
     with open('logs/default.log', 'a+') as f:
         f.write(logMessage + '\n')
     # END
+
+
+# STOP RUNNING PROCESESS
+if(webDriverStarts):
+    print(logMessage)
+    webDriver.stop()
+
+if(displayStarts):
+    if(DEPLOYMENT):
+        display.stop()

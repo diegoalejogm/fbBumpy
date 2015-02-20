@@ -29,3 +29,4 @@ class WebDriverWrapper:
 
     def stop(self):
         self.webDriver.quit()
+
