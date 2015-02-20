@@ -35,6 +35,5 @@ class DataExtractor:
                     cookieDomain = '.facebook.com'
                     cookiePath = '/'
                     newCookie = Cookie(name=cookieName, value=cookieValue, domain=cookieDomain, path=cookiePath)
-                    print(str(cookieValue))
                     cookies.append(newCookie)
         return cookies

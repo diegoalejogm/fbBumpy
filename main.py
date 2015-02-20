@@ -51,7 +51,7 @@ try:
     fbPoster = FBPoster(driver=webDriver.webDriver)
 
     for post in posts:
-        fbPoster.createAndDeletePost(post, error)
+        fbPoster.createAndDeletePost(post, DEFAULT_MESSAGE)
     message = DEFAULT_MESSAGE
 
     logMessage = 'SUCCESS'
