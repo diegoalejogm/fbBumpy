@@ -10,6 +10,7 @@ from Classes.WebDriverWrapper import WebDriverWrapper as WebDriver
 from Classes.DisplayWrapper import DisplayWrapper as Display
 from Classes.DataExtractor import DataExtractor
 from Classes.FBPoster import FBPoster
+from Settings.Settings import  Settings
 import traceback
 
 
@@ -24,8 +25,9 @@ try:
 
     # SET DEPLOYMENT VARIABLES
     DEPLOYMENT = True
-    if(socket.gethostname() == 'macdiego' or 'Apple' in sys.version):
+    if('mac' in socket.gethostname().lower()  or 'Apple' in sys.version):
         DEPLOYMENT = False
+
 
 
     # CONSTANTS
@@ -67,12 +69,15 @@ except:
 
 finally:
 
-    # SAVE LOG
-    time = str(datetime.datetime.now())
-    logMessage = time + ' --> ' + logMessage
-    with open('logs/default.log', 'a+') as f:
-        f.write(logMessage + '\n')
-    # END
+    try:
+        # SAVE LOG
+        time = str(datetime.datetime.now())
+        logMessage = time + ' --> ' + logMessage
+        with open(Settings.LOG_PATH, 'a+') as f:
+            f.write(logMessage + '\n')
+        # END
+    except:
+        pass
 
 
 # STOP RUNNING PROCESESS
